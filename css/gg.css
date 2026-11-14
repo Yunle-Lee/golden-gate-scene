@@ -1,0 +1,95 @@
+/* Golden Gate scene + 404-card shell (from ObsidianUI, theme keyed on [data-theme]) */
+
+:is(html:has(.obsidianui-404),body:has(.obsidianui-404)){overscroll-behavior:none;overflow:hidden}
+
+.gg-scene{--anatomy-paper:#fbfbfa;--anatomy-face:#fff;--anatomy-top:#fff;--anatomy-shade-0:#dcdcd9;--anatomy-shade-1:#e5e5e2;--anatomy-shade-2:#ededea;--anatomy-shade-3:#f4f4f1;--anatomy-lit-top:#fff;--anatomy-lit-shade:#eeeeeb;--anatomy-hi:#26262a;--anatomy-mid:#8a8a8f;--anatomy-lo:#b4b4b8;--anatomy-faint:#d4d4d6;--anatomy-lit:#000;--anatomy-halo:#8a8a80;--anatomy-halo-opacity:.32;--anatomy-dot:#3a3a3e;--anatomy-weight:.6px;--anatomy-mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;--gg-water:#e6e6e3;--gg-land-top:#fafaf8;--gg-land-0:#b9b9b5;--gg-land-1:#c9c9c5;--gg-land-2:#d8d8d4;--gg-land-3:#e8e8e5;--gg-steel-top:#f3875a;--gg-steel-0:#b4461d;--gg-steel-1:#c95528;--gg-steel-2:#dc6534;--gg-steel-3:#e97441;--gg-cable-body:#e06a38;--gg-cable-shine:#f6996f;--gg-cable-shade:#b4461d;--gg-car-top:#fff;--gg-car-0:#8f979f;--gg-car-1:#a7aeb6;--gg-car-2:#bfc6cc;--gg-car-3:#d2d8dd;--gg-paint-dim:0%;background:var(--background);position:relative;overflow:hidden}
+[data-theme="dark"] .gg-scene{--anatomy-paper:#131313;--anatomy-face:#1b1b1b;--anatomy-top:#1c1c1c;--anatomy-shade-0:#0f0f0f;--anatomy-shade-1:#121212;--anatomy-shade-2:#151515;--anatomy-shade-3:#181818;--anatomy-lit-top:#262626;--anatomy-lit-shade:#1d1d1d;--anatomy-hi:#d4d4d4;--anatomy-mid:#6a6a6a;--anatomy-lo:#3e3e3e;--anatomy-faint:#2a2a2a;--anatomy-lit:#fff;--anatomy-halo:#050505;--anatomy-halo-opacity:.9;--anatomy-dot:#e6e6e6;--gg-water:#0b0b0b;--gg-land-top:#363636;--gg-land-0:#111;--gg-land-1:#1a1a1a;--gg-land-2:#232323;--gg-land-3:#2c2c2c;--gg-steel-top:#cc5a2c;--gg-steel-0:#4a1d0c;--gg-steel-1:#6b2a11;--gg-steel-2:#8c3816;--gg-steel-3:#ab461e;--gg-cable-body:#9d3f19;--gg-cable-shine:#d0602f;--gg-cable-shade:#4a1d0c;--gg-car-top:#4a525c;--gg-car-0:#1c2127;--gg-car-1:#272d35;--gg-car-2:#333b44;--gg-car-3:#3d4650;--gg-paint-dim:18%}
+.gg-scene-host{opacity:0;width:100%;height:100%;transition:opacity .9s cubic-bezier(.22,1,.36,1);position:relative}
+.gg-scene[data-ready] .gg-scene-host{opacity:1}
+.gg-scene-host>svg{pointer-events:none;width:100%;height:100%;display:block;position:absolute;inset:0}
+.gg-scene-host>svg[data-moving]{will-change:transform}
+.gg-car{pointer-events:visiblePainted}
+.iso-fill{fill:var(--anatomy-paper);stroke:none}
+.iso-solid[data-lit]>.iso-fill{fill:var(--anatomy-face)}
+.iso-shade,.iso-top{stroke:none}
+.iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0)}
+.iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1)}
+.iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2)}
+.iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3)}
+.iso-top{fill:var(--anatomy-top)}
+.iso-solid[data-lit]>.iso-top{fill:var(--anatomy-lit-top)}
+.iso-solid[data-lit]>.iso-shade{fill:var(--anatomy-lit-shade)}
+.iso-solid[data-seamless]>.iso-shade,.iso-solid[data-seamless]>.iso-top{stroke-width:.4px;stroke-linejoin:round}
+.iso-solid[data-seamless]>.iso-shade[data-shade="0"]{stroke:var(--anatomy-shade-0)}
+.iso-solid[data-seamless]>.iso-shade[data-shade="1"]{stroke:var(--anatomy-shade-1)}
+.iso-solid[data-seamless]>.iso-shade[data-shade="2"]{stroke:var(--anatomy-shade-2)}
+.iso-solid[data-seamless]>.iso-shade[data-shade="3"]{stroke:var(--anatomy-shade-3)}
+.iso-solid[data-seamless]>.iso-top{stroke:var(--anatomy-top)}
+.iso-solid[data-seamless][data-lit]>.iso-top{stroke:var(--anatomy-lit-top)}
+.iso-solid[data-seamless][data-lit]>.iso-shade{stroke:var(--anatomy-lit-shade)}
+.iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-lit)}
+.iso-halo{fill:var(--anatomy-halo);stroke:none;filter:blur(9px);opacity:var(--anatomy-halo-opacity);transform:translateY(3px)}
+.iso-line{fill:none;stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight);stroke-linecap:round;stroke-linejoin:round}
+.iso-line[data-tone=hi]{stroke:var(--anatomy-hi)}
+.iso-line[data-tone=mid]{stroke:var(--anatomy-mid)}
+.iso-line[data-tone=lo]{stroke:var(--anatomy-lo)}
+.iso-line[data-tone=faint]{stroke:var(--anatomy-faint)}
+.iso-line[data-tone=lit]{stroke:var(--anatomy-lit)}
+.iso-line[data-dotted]{stroke-dasharray:.01 3.5;stroke-width:1px}
+.iso-line[data-dashed]{stroke-dasharray:3 3}
+.iso-dots circle{fill:var(--anatomy-dot);stroke:none;opacity:.32}
+.iso-dots[data-tone=hi] circle{opacity:.85}
+.iso-dots[data-tone=mid] circle{opacity:.45}
+.iso-dots[data-tone=lo] circle{opacity:.22}
+.iso-dots[data-tone=faint] circle{opacity:.12}
+.iso-face-text{fill:var(--anatomy-mid);font-family:var(--anatomy-mono);letter-spacing:.04em}
+.iso-face-text[data-tone=hi]{fill:var(--anatomy-hi)}
+.iso-face-text[data-tone=lo]{fill:var(--anatomy-lo)}
+.iso-face-text[data-tone=faint]{fill:var(--anatomy-faint)}
+.tb-body{fill:var(--anatomy-shade-2);stroke:none}
+.tb-shine{fill:var(--anatomy-top);stroke:none}
+.tb-shade{fill:var(--anatomy-shade-0);stroke:none}
+.tb-ring{fill:none;stroke:var(--anatomy-lo);stroke-width:.45px;stroke-linecap:butt;stroke-linejoin:round}
+.tb-ring[data-tone=mid]{stroke:var(--anatomy-mid)}
+.tb-ring[data-tone=faint]{stroke:var(--anatomy-faint)}
+.tb-ring[data-tone=hi]{stroke:var(--anatomy-hi)}
+.gg-water{fill:var(--gg-water);stroke:none}
+.gg-land{--anatomy-top:var(--gg-land-top);--anatomy-shade-0:var(--gg-land-0);--anatomy-shade-1:var(--gg-land-1);--anatomy-shade-2:var(--gg-land-2);--anatomy-shade-3:var(--gg-land-3);--anatomy-paper:var(--gg-land-2)}
+.gg-steel{--anatomy-top:var(--gg-steel-top);--anatomy-shade-0:var(--gg-steel-0);--anatomy-shade-1:var(--gg-steel-1);--anatomy-shade-2:var(--gg-steel-2);--anatomy-shade-3:var(--gg-steel-3);--anatomy-paper:var(--gg-steel-2)}
+.gg-cable .tb-body{fill:var(--gg-cable-body)}
+.gg-cable .tb-shine{fill:var(--gg-cable-shine)}
+.gg-cable .tb-shade{fill:var(--gg-cable-shade)}
+@property --gg-mix{syntax:"<number>";inherits:true;initial-value:0}
+.gg-car{--gg-paint:#8f979f;--gg-mix:0;--gg-coat:color-mix(in oklab, var(--gg-paint), black var(--gg-paint-dim));--anatomy-top:color-mix(in oklab, color-mix(in oklab, var(--gg-coat), white 42%) calc(var(--gg-mix) * 100%), var(--gg-car-top));--anatomy-shade-0:color-mix(in oklab, color-mix(in oklab, var(--gg-coat), black 40%) calc(var(--gg-mix) * 100%), var(--gg-car-0));--anatomy-shade-1:color-mix(in oklab, color-mix(in oklab, var(--gg-coat), black 24%) calc(var(--gg-mix) * 100%), var(--gg-car-1));--anatomy-shade-2:color-mix(in oklab, var(--gg-coat) calc(var(--gg-mix) * 100%), var(--gg-car-2));--anatomy-shade-3:color-mix(in oklab, color-mix(in oklab, var(--gg-coat), white 16%) calc(var(--gg-mix) * 100%), var(--gg-car-3));--anatomy-paper:var(--anatomy-shade-2);transition:--gg-mix .4s cubic-bezier(.22,1,.36,1)}
+.gg-car[data-lit]{--gg-mix:1}
+.gg-lamp{--anatomy-top:#f4f4f2;--anatomy-shade-0:#b9b9b6;--anatomy-shade-1:#cdcdca;--anatomy-shade-2:#dededb;--anatomy-shade-3:#ebebe8;--anatomy-paper:#dededb}
+.gg-lamp[data-on],[data-theme="dark"] .gg-scene .gg-lamp{--anatomy-top:#fffbe8;--anatomy-shade-0:#f2ead0;--anatomy-shade-1:#f6efd8;--anatomy-shade-2:#faf4e0;--anatomy-shade-3:#fdf8e8;--anatomy-paper:#f6efd8}
+.gg-wake path{stroke-dasharray:2.6 3.4;animation:1.3s linear infinite gg-wake}
+@keyframes gg-wake{to{stroke-dashoffset:-6px}}
+.gg-fog{opacity:.75}
+.gg-gull{fill:var(--anatomy-mid);stroke:none}
+@media (prefers-reduced-motion:reduce){.gg-scene-host,.gg-car{transition:none}.gg-wake path{animation:none}}
+
+@keyframes nf-rise{0%{opacity:0;translate:0 14px}}
+@keyframes nf-drift{0%{translate:0}to{translate:-33.333%}}
+.obsidianui-404{--nf-haze:#f8f8f6;--nf-ease:cubic-bezier(.22, 1, .36, 1);height:100vh;height:100dvh;background:var(--background);color:var(--foreground);padding:10px;overflow:hidden}
+[data-theme="dark"] .obsidianui-404{--nf-haze:#050505}
+.obsidianui-404-card{background:var(--nf-haze);isolation:isolate;border-radius:32px;height:100%;position:relative;overflow:hidden;box-shadow:0 8px 30px #0000000a}
+[data-theme="dark"] .obsidianui-404-card{box-shadow:0 8px 30px #0000004d}
+.obsidianui-404-card:after{z-index:3;border-radius:inherit;content:"";pointer-events:none;position:absolute;inset:0;box-shadow:inset 0 0 0 1px #0000000f}
+[data-theme="dark"] .obsidianui-404-card:after{box-shadow:inset 0 0 0 1px #ffffff14}
+.obsidianui-404-card>.obsidianui-404-scene{position:absolute;inset:0}
+.obsidianui-404-haze{--nf-fade:linear-gradient(to top, var(--nf-haze) 0%, color-mix(in oklab, var(--nf-haze) 92%, transparent) 22%, color-mix(in oklab, var(--nf-haze) 55%, transparent) 34%, color-mix(in oklab, var(--nf-haze) 14%, transparent) 44%, transparent 52%);z-index:1;background:var(--nf-fade);pointer-events:none;position:absolute;inset:0;overflow:hidden}
+.obsidianui-404-haze:before{background:radial-gradient(closest-side, color-mix(in oklab, var(--nf-haze) 70%, transparent), transparent) 0% 60% / 16.6667% 70% repeat-x, radial-gradient(closest-side, color-mix(in oklab, var(--nf-haze) 55%, transparent), transparent) 4% 15% / 11.1111% 55% repeat-x, radial-gradient(closest-side, color-mix(in oklab, var(--nf-haze) 45%, transparent), transparent) 20% 95% / 33.3333% 60% repeat-x;content:"";will-change:translate;width:300%;height:36%;animation:90s linear infinite nf-drift;position:absolute;bottom:14%;left:0}
+.obsidianui-404-copy{z-index:2;text-align:center;pointer-events:none;flex-direction:column;align-items:center;padding:0 1.5rem 2.5rem;display:flex;position:absolute;bottom:0;left:0;right:0}
+.obsidianui-404-copy>*{pointer-events:auto;animation:nf-rise .7s var(--nf-ease) backwards}
+.obsidianui-404-copy>:first-child{animation-delay:.12s}
+.obsidianui-404-copy>:nth-child(2){animation-delay:.2s}
+.obsidianui-404-copy>:nth-child(3){animation-delay:.28s}
+@media (min-width:1024px) and (min-aspect-ratio:23/20),(min-width:640px) and (min-aspect-ratio:3/2){
+  .obsidianui-404-haze{--nf-fade:linear-gradient(to left, var(--nf-haze) 0%, color-mix(in oklab, var(--nf-haze) 90%, transparent) 20%, color-mix(in oklab, var(--nf-haze) 55%, transparent) 33%, color-mix(in oklab, var(--nf-haze) 14%, transparent) 44%, transparent 52%);-webkit-mask-image:linear-gradient(270deg,#000 30%,#0000 62%);mask-image:linear-gradient(270deg,#000 30%,#0000 62%)}
+  .obsidianui-404-haze:before{height:80%;top:10%;bottom:auto}
+  .obsidianui-404-copy{text-align:left;justify-content:center;align-items:flex-start;width:min(26rem,34%);padding:0;top:0;left:auto;right:clamp(3rem,7vw,8rem)}
+}
+@media (max-width:767px){.obsidianui-404-card{border-radius:24px}}
+@media (prefers-reduced-motion:reduce){.obsidianui-404-haze:before,.obsidianui-404-copy>*{animation:none}}
